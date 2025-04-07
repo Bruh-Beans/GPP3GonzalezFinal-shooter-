@@ -1,6 +1,7 @@
 ﻿
 using UnityEditor.VersionControl;
 using UnityEngine;
+using UnityEngine.UI;
 
 /*
     This file has a commented version with details about how each line works. 
@@ -15,6 +16,19 @@ using UnityEngine;
 /// </summary>
 public class ThirdPersonController : MonoBehaviour
 {
+    public Slider chargeBar;
+
+    public GameObject projectilePrefab;
+    public Transform projectileSpawnPoint;
+    public float projectileSpeed = 20f;
+    // Bow charging system
+    float currentCharge = 0f;
+    public float maxCharge = 1f; // Max seconds you can charge
+    public float minProjectileSpeed = 0;
+    public float maxProjectileSpeed = 100f;
+    bool isCharging = false;
+
+
 
     [Tooltip("Speed ​​at which the character moves. It is not affected by gravity or jumping.")]
     public float velocity = 5f;
@@ -60,6 +74,12 @@ public class ThirdPersonController : MonoBehaviour
     // Update is only being used here to identify keys and trigger animations
     void Update()
     {
+        if (chargeBar != null)
+        {
+            chargeBar.value = currentCharge;
+        }
+
+        HandleShooting();
 
         // Input checkers
         inputHorizontal = Input.GetAxis("Horizontal");
@@ -70,34 +90,34 @@ public class ThirdPersonController : MonoBehaviour
         inputCrouch = Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.JoystickButton1);
 
         // Check if you pressed the crouch input key and change the player's state
-        if ( inputCrouch )
+        if (inputCrouch)
             isCrouching = !isCrouching;
 
         // Run and Crouch animation
         // If dont have animator component, this block wont run
-        if ( cc.isGrounded && animator != null )
+        if (cc.isGrounded && animator != null)
         {
 
             // Crouch
             // Note: The crouch animation does not shrink the character's collider
             animator.SetBool("crouch", isCrouching);
-            
+
             // Run
             float minimumSpeed = 0.9f;
-            animator.SetBool("run", cc.velocity.magnitude > minimumSpeed );
+            animator.SetBool("run", cc.velocity.magnitude > minimumSpeed);
 
             // Sprint
             isSprinting = cc.velocity.magnitude > minimumSpeed && inputSprint;
-            animator.SetBool("sprint", isSprinting );
+            animator.SetBool("sprint", isSprinting);
 
         }
 
         // Jump animation
-        if( animator != null )
-            animator.SetBool("air", cc.isGrounded == false );
+        if (animator != null)
+            animator.SetBool("air", cc.isGrounded == false);
 
         // Handle can jump or not
-        if ( inputJump && cc.isGrounded )
+        if (inputJump && cc.isGrounded)
         {
             isJumping = true;
             // Disable crounching when jumping
@@ -115,10 +135,10 @@ public class ThirdPersonController : MonoBehaviour
 
         // Sprinting velocity boost or crounching desacelerate
         float velocityAdittion = 0;
-        if ( isSprinting )
+        if (isSprinting)
             velocityAdittion = sprintAdittion;
         if (isCrouching)
-            velocityAdittion =  - (velocity * 0.50f); // -50% velocity
+            velocityAdittion = -(velocity * 0.50f); // -50% velocity
 
         // Direction movement
         float directionX = inputHorizontal * (velocity + velocityAdittion) * Time.deltaTime;
@@ -126,7 +146,7 @@ public class ThirdPersonController : MonoBehaviour
         float directionY = 0;
 
         // Jump handler
-        if ( isJumping )
+        if (isJumping)
         {
 
             // Apply inertia and smoothness when climbing the jump
@@ -145,7 +165,7 @@ public class ThirdPersonController : MonoBehaviour
         // Add gravity to Y axis
         directionY = directionY - gravity * Time.deltaTime;
 
-        
+
         // --- Character rotation --- 
 
         Vector3 forward = Camera.main.transform.forward;
@@ -170,12 +190,12 @@ public class ThirdPersonController : MonoBehaviour
 
         // --- End rotation ---
 
-        
+
         Vector3 verticalDirection = Vector3.up * directionY;
         Vector3 horizontalDirection = forward + right;
 
         Vector3 moviment = verticalDirection + horizontalDirection;
-        cc.Move( moviment );
+        cc.Move(moviment);
 
     }
 
@@ -196,5 +216,54 @@ public class ThirdPersonController : MonoBehaviour
             isJumping = false;
         }
     }
+    void HandleShooting()
+    {
+        // Start charging
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            isCharging = true;
+            currentCharge = 0f;
+        }
+
+        // Continue charging
+        if (Input.GetKey(KeyCode.Mouse0) && isCharging)
+        {
+            currentCharge += Time.deltaTime;
+            currentCharge = Mathf.Clamp(currentCharge, 0f, maxCharge);
+        }
+
+        // Release and shoot
+        if (Input.GetKeyUp(KeyCode.Mouse0) && isCharging)
+        {
+            isCharging = false;
+
+            float chargePercent = currentCharge / maxCharge;
+            float finalSpeed = Mathf.Lerp(minProjectileSpeed, maxProjectileSpeed, chargePercent);
+
+            GameObject projectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, projectileSpawnPoint.rotation);
+            Rigidbody rb = projectile.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                rb.velocity = projectileSpawnPoint.forward * finalSpeed;
+            }
+
+            // Optional: Face toward target
+            Vector3 mousePosition = Input.mousePosition;
+            Ray ray = Camera.main.ScreenPointToRay(mousePosition);
+            if (Physics.Raycast(ray, out RaycastHit hit))
+            {
+                Vector3 direction = hit.point - transform.position;
+                direction.y = 0;
+                if (direction.sqrMagnitude > 0.01f)
+                {
+                    Quaternion lookRotation = Quaternion.LookRotation(direction);
+                    transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, 0.3f);
+                }
+            }
+
+            currentCharge = 0f;
+        }
+    }
 
 }
+
