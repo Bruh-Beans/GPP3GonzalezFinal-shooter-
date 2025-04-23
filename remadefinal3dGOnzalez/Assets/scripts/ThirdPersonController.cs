@@ -8,6 +8,7 @@ public class ThirdPersonController : MonoBehaviour
 {
     private float fixedYPosition;
 
+
     [Header("UI Elements")]
     public TextMeshProUGUI meleeMessageText;
     public TextMeshProUGUI meleeTimerText;
@@ -24,6 +25,8 @@ public class ThirdPersonController : MonoBehaviour
     public GameObject projectilePrefab;
     public Transform projectileSpawnPoint;
     public float projectileSpeed = 20f;
+    private float shootCooldown = 1f;
+    private float nextShootTime = 0f;
     private float currentCharge = 0f;
     public float maxCharge = 1f, minProjectileSpeed = 0f, maxProjectileSpeed = 100f;
     private bool isCharging = false, isDrawn = false;
@@ -46,7 +49,7 @@ public class ThirdPersonController : MonoBehaviour
     public GameObject meleeWeapon;
     public int killsToSwitch = 5;
     public float meleeSpeedBoost = 50f;
-    public bool isMeleeMode = false; 
+    public bool isMeleeMode = false;
     private bool isWeaponEquipped = false;
     private float defaultVelocity;
 
@@ -123,7 +126,7 @@ public class ThirdPersonController : MonoBehaviour
         if (isMeleeTimerRunning)
         {
             meleeTimeLeft -= Time.deltaTime;
-            meleeTimerText.text = "Melee Mode: " + Mathf.CeilToInt(meleeTimeLeft).ToString();
+            meleeTimerText.text = "BloodThirst: " + Mathf.CeilToInt(meleeTimeLeft).ToString();
 
             if (meleeTimeLeft <= 0f)
             {
@@ -167,13 +170,15 @@ public class ThirdPersonController : MonoBehaviour
 
     void HandleShooting()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && Time.time >= nextShootTime)
         {
             isCharging = true;
             currentCharge = 0f;
             isDrawn = true;
             animator.SetBool("isCharging", true);
             animator.SetBool("isDrawn", true);
+            nextShootTime = Time.time + shootCooldown;
+
         }
 
         if (Input.GetKey(KeyCode.Mouse0) && isCharging)
@@ -239,7 +244,7 @@ public class ThirdPersonController : MonoBehaviour
         }
 
         // Show message
-        StartCoroutine(ShowMeleeMessage("Melee Mode Activated!", 2f));
+        StartCoroutine(ShowMeleeMessage("BloodThirst Activated!", 2f));
 
         // Start timer
         meleeTimeLeft = meleeDuration;
@@ -276,3 +281,8 @@ public class ThirdPersonController : MonoBehaviour
         return Physics.Raycast(transform.position, Vector3.down, 1.8f);
     }
 }
+
+
+
+
+

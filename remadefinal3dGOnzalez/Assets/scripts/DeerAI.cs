@@ -36,6 +36,13 @@ public class DeerAI : MonoBehaviour
     public BloodThirstManager bloodThirstManager;
     public Slider killSlider;
 
+    // Melee Mode Visuals
+    public GameObject[] meleeObjects = new GameObject[4];
+    public Material meleeModeMaterial;
+    private Material[] originalMaterials;
+
+    private bool inMeleeMode = false;
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -58,6 +65,15 @@ public class DeerAI : MonoBehaviour
 
         if (scoreTextObj != null) scoreText = scoreTextObj.GetComponent<Text>();
         if (killSlider != null) killSlider.value = killCount;
+
+        // Save original materials
+        originalMaterials = new Material[meleeObjects.Length];
+        for (int i = 0; i < meleeObjects.Length; i++)
+        {
+            Renderer renderer = meleeObjects[i].GetComponent<Renderer>();
+            if (renderer != null)
+                originalMaterials[i] = renderer.material;
+        }
 
         Debug.Log($"{name} initialized.");
     }
@@ -158,28 +174,17 @@ public class DeerAI : MonoBehaviour
         if (isDead) return;
         isDead = true;
 
-        // Disable the BoxCollider immediately
         BoxCollider collider = GetComponent<BoxCollider>();
-        if (collider != null)
-        {
-            collider.enabled = false; // Disable the BoxCollider immediately
-        }
+        if (collider != null) collider.enabled = false;
 
-        // Disable the Rigidbody immediately
         Rigidbody rb = GetComponent<Rigidbody>();
-        if (rb != null)
-        {
-            rb.isKinematic = true; // Set the Rigidbody to kinematic to stop physics interaction
-        }
+        if (rb != null) rb.isKinematic = true;
 
         animator?.SetBool("isDead", true);
         killCount++;
 
-        if (scoreText != null)
-            scoreText.text = "Kills: " + killCount;
-
-        if (killSlider != null)
-            killSlider.value = killCount;
+        if (scoreText != null) scoreText.text = "Kills: " + killCount;
+        if (killSlider != null) killSlider.value = killCount;
 
         if (deerBody != null) deerBody.SetActive(false);
         else gameObject.SetActive(false);
@@ -187,8 +192,6 @@ public class DeerAI : MonoBehaviour
         if (bloodThirstManager != null)
             bloodThirstManager.OnKill();
     }
-
-
 
     void OnTriggerEnter(Collider other)
     {
@@ -204,4 +207,35 @@ public class DeerAI : MonoBehaviour
             scoreManager?.IncreaseKillCount(1);
         }
     }
+
+    public void EnterMeleeMode()
+    {
+        if (inMeleeMode) return;
+        inMeleeMode = true;
+
+        for (int i = 0; i < meleeObjects.Length; i++)
+        {
+            Renderer renderer = meleeObjects[i].GetComponent<Renderer>();
+            if (renderer != null && meleeModeMaterial != null)
+            {
+                renderer.material = meleeModeMaterial;
+            }
+        }
+    }
+
+    public void ExitMeleeMode()
+    {
+        if (!inMeleeMode) return;
+        inMeleeMode = false;
+
+        for (int i = 0; i < meleeObjects.Length; i++)
+        {
+            Renderer renderer = meleeObjects[i].GetComponent<Renderer>();
+            if (renderer != null && originalMaterials[i] != null)
+            {
+                renderer.material = originalMaterials[i];
+            }
+        }
+    }
 }
+
