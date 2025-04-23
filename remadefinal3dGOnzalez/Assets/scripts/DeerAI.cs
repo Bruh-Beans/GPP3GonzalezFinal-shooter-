@@ -4,15 +4,6 @@ using UnityEngine.UI;
 
 public class DeerAI : MonoBehaviour
 {
-    private bool hasForcedRun = false;
-
-    private bool wasMeleeMode;
-    private float speedBoostDuration = 2f;
-    private float speedBoostTimer;
-    private bool isSpeedBoosted;
-
-    private ThirdPersonController playerController;
-
     private Animator animator;
     private NavMeshAgent agent;
 
@@ -27,12 +18,12 @@ public class DeerAI : MonoBehaviour
     public float runDuration = 5f;
 
     private float wanderRadius = 100f;
-    private float wanderTimer = 5f;
+    private float wanderTimer = 30f;
     private float timer;
     private float runTimer;
     private bool isRunning;
     private bool isHiding;
-    private float hideWaitTime = 2f;
+    private float hideWaitTime = 3f;
     private float hideWaitTimer;
 
     // Death / Scoring
@@ -44,9 +35,6 @@ public class DeerAI : MonoBehaviour
 
     public BloodThirstManager bloodThirstManager;
     public Slider killSlider;
-
-    // Static flag for forced run to (0,0,0)
-    public static bool forceRunToOrigin = false;
 
     void Start()
     {
@@ -72,48 +60,11 @@ public class DeerAI : MonoBehaviour
         if (killSlider != null) killSlider.value = killCount;
 
         Debug.Log($"{name} initialized.");
-        if (playerObj != null)
-        {
-            player = playerObj.transform;
-            playerController = playerObj.GetComponent<ThirdPersonController>();
-        }
     }
 
     void Update()
     {
         if (isDead) return;
-
-        // Trigger force run when F is held OR melee mode is active
-        forceRunToOrigin = Input.GetKey(KeyCode.F) || (playerController != null && playerController.isMeleeMode);
-
-        if (forceRunToOrigin)
-        {
-            ForceRunToOrigin();
-            return;
-        }
-
-        if (wasMeleeMode && playerController != null && !playerController.isMeleeMode)
-        {
-            isSpeedBoosted = true;
-            speedBoostTimer = 0f;
-            agent.speed = baseSpeed * 2f; // Boosted speed
-            timer = wanderTimer; // Trigger immediate wander
-        }
-
-        // Handle speed boost duration
-        if (isSpeedBoosted)
-        {
-            speedBoostTimer += Time.deltaTime;
-            if (speedBoostTimer >= speedBoostDuration)
-            {
-                agent.speed = baseSpeed;
-                isSpeedBoosted = false;
-            }
-        }
-
-        // Track current melee state for next frame
-        if (playerController != null)
-            wasMeleeMode = playerController.isMeleeMode;
 
         timer += Time.deltaTime;
 
@@ -147,15 +98,9 @@ public class DeerAI : MonoBehaviour
         CheckForPlayer();
     }
 
-    void ForceRunToOrigin()
-    {
-        agent.speed = baseSpeed + 80f;
-        agent.SetDestination(Vector3.zero);
-    }
-
     void CheckForPlayer()
     {
-        if (player == null || isDead || forceRunToOrigin) return;
+        if (player == null || isDead) return;
 
         Vector3 direction = player.position - transform.position;
         if (Vector3.Distance(transform.position, player.position) < sightRange &&
@@ -167,7 +112,7 @@ public class DeerAI : MonoBehaviour
 
     public void RunAway()
     {
-        if (isRunning || isDead || forceRunToOrigin) return;
+        if (isRunning || isDead) return;
 
         agent.speed = runSpeed;
         for (int i = 0; i < 5; i++)
@@ -213,11 +158,19 @@ public class DeerAI : MonoBehaviour
         if (isDead) return;
         isDead = true;
 
+        // Disable the BoxCollider immediately
         BoxCollider collider = GetComponent<BoxCollider>();
-        if (collider != null) collider.enabled = false;
+        if (collider != null)
+        {
+            collider.enabled = false; // Disable the BoxCollider immediately
+        }
 
+        // Disable the Rigidbody immediately
         Rigidbody rb = GetComponent<Rigidbody>();
-        if (rb != null) rb.isKinematic = true;
+        if (rb != null)
+        {
+            rb.isKinematic = true; // Set the Rigidbody to kinematic to stop physics interaction
+        }
 
         animator?.SetBool("isDead", true);
         killCount++;
@@ -234,6 +187,8 @@ public class DeerAI : MonoBehaviour
         if (bloodThirstManager != null)
             bloodThirstManager.OnKill();
     }
+
+
 
     void OnTriggerEnter(Collider other)
     {

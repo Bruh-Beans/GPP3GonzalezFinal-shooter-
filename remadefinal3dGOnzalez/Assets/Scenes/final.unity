@@ -2442,6 +2442,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: deerPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 5193919023204807661, guid: 1f9d3a1645bb5144ebfc1533263b4775, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5193919023204807661, guid: 1f9d3a1645bb5144ebfc1533263b4775, type: 3}
+      propertyPath: m_Constraints
+      value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 5193919023204807661, guid: 1f9d3a1645bb5144ebfc1533263b4775, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9089230284414408228, guid: 1f9d3a1645bb5144ebfc1533263b4775, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -23025,7 +23037,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deerPrefab: {fileID: 698528900}
-  deerCount: 2
+  deerCount: 300
   spawnArea: {x: 200, y: 0, z: 200}
 --- !u!4 &1896451668
 Transform:
@@ -25767,6 +25779,10 @@ PrefabInstance:
       propertyPath: objectToMove
       value: 
       objectReference: {fileID: 1931592054}
+    - target: {fileID: 6800304791665561848, guid: e12be58d374c13d41b052b534bc26138, type: 3}
+      propertyPath: meleeDuration
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6800304791665561848, guid: e12be58d374c13d41b052b534bc26138, type: 3}
       propertyPath: firstPersonCam
       value: 
