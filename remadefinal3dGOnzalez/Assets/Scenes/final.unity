@@ -15,7 +15,7 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
   m_Fog: 1
-  m_FogColor: {r: 0.14150941, g: 0.14150941, b: 0.14150941, a: 1}
+  m_FogColor: {r: 1, g: 1, b: 1, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.04
   m_LinearFogStart: 0
@@ -2421,7 +2421,7 @@ PrefabInstance:
     - target: {fileID: 1022355918705786003, guid: 1f9d3a1645bb5144ebfc1533263b4775, type: 3}
       propertyPath: deerBody
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 698528900}
     - target: {fileID: 1022355918705786003, guid: 1f9d3a1645bb5144ebfc1533263b4775, type: 3}
       propertyPath: runSpeed
       value: 70
@@ -5076,7 +5076,6 @@ MonoBehaviour:
   runDuration: 10
   deerBody: {fileID: 0}
   scoreTextObj: {fileID: 1521248039}
-  bloodThirstManager: {fileID: 52584830697192033, guid: 8506df9d05b818248a4fa24b87fb9bac, type: 3}
   killSlider: {fileID: 1330416002}
   meleeObjects:
   - {fileID: 1732347182}
@@ -16950,17 +16949,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.8253942, y: 1.7609591, z: 4.1941376}
   m_Center: {x: 0.030615568, y: -0.044245243, z: 0.28159618}
---- !u!114 &1401472625 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6800304791665561848, guid: e12be58d374c13d41b052b534bc26138, type: 3}
-  m_PrefabInstance: {fileID: 6379125926244784553}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1290680586}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4dbd62af2a25df34c9a8e8a7bcb2c370, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!54 &1401472629
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -22323,17 +22311,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 771049959}
   m_SourcePrefab: {fileID: 100100000, guid: 4735160b42a3154428094dff59ef0f4e, type: 3}
---- !u!114 &1791879770 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3992028833445413690, guid: 9750a7fad92284948a25c44250b6a91f, type: 3}
-  m_PrefabInstance: {fileID: 7140150114734246778}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1792756050 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100006, guid: 4735160b42a3154428094dff59ef0f4e, type: 3}
@@ -25911,79 +25888,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fe3a463b6d964c4dbf28e82f678ffe1, type: 3}
---- !u!1001 &3310178271421949462
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 52584830697192033, guid: 8506df9d05b818248a4fa24b87fb9bac, type: 3}
-      propertyPath: alertText
-      value: 
-      objectReference: {fileID: 1791879770}
-    - target: {fileID: 52584830697192033, guid: 8506df9d05b818248a4fa24b87fb9bac, type: 3}
-      propertyPath: killSlider
-      value: 
-      objectReference: {fileID: 1330416002}
-    - target: {fileID: 52584830697192033, guid: 8506df9d05b818248a4fa24b87fb9bac, type: 3}
-      propertyPath: playerController
-      value: 
-      objectReference: {fileID: 1401472625}
-    - target: {fileID: 52584830697192033, guid: 8506df9d05b818248a4fa24b87fb9bac, type: 3}
-      propertyPath: bloodThirstSlider
-      value: 
-      objectReference: {fileID: 1330416002}
-    - target: {fileID: 5553661603735944367, guid: 8506df9d05b818248a4fa24b87fb9bac, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2.0037384
-      objectReference: {fileID: 0}
-    - target: {fileID: 5553661603735944367, guid: 8506df9d05b818248a4fa24b87fb9bac, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 96.593636
-      objectReference: {fileID: 0}
-    - target: {fileID: 5553661603735944367, guid: 8506df9d05b818248a4fa24b87fb9bac, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -208.8853
-      objectReference: {fileID: 0}
-    - target: {fileID: 5553661603735944367, guid: 8506df9d05b818248a4fa24b87fb9bac, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5553661603735944367, guid: 8506df9d05b818248a4fa24b87fb9bac, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5553661603735944367, guid: 8506df9d05b818248a4fa24b87fb9bac, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5553661603735944367, guid: 8506df9d05b818248a4fa24b87fb9bac, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5553661603735944367, guid: 8506df9d05b818248a4fa24b87fb9bac, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5553661603735944367, guid: 8506df9d05b818248a4fa24b87fb9bac, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5553661603735944367, guid: 8506df9d05b818248a4fa24b87fb9bac, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8197844819400410245, guid: 8506df9d05b818248a4fa24b87fb9bac, type: 3}
-      propertyPath: m_Name
-      value: BloodThirstManager
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 8506df9d05b818248a4fa24b87fb9bac, type: 3}
 --- !u!1001 &6379125926244784553
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26041,6 +25945,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6800304791665561848, guid: e12be58d374c13d41b052b534bc26138, type: 3}
+      propertyPath: velocity
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6800304791665561848, guid: e12be58d374c13d41b052b534bc26138, type: 3}
       propertyPath: bowWeapon
       value: 
       objectReference: {fileID: 1950007499}
@@ -26096,6 +26004,10 @@ PrefabInstance:
       propertyPath: maxProjectileSpeed
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 6800304791665561848, guid: e12be58d374c13d41b052b534bc26138, type: 3}
+      propertyPath: bloodThirstSprintAddition
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 7409862312006357118, guid: e12be58d374c13d41b052b534bc26138, type: 3}
       propertyPath: m_ApplyRootMotion
       value: 0
@@ -26143,8 +26055,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 295180217341823742, guid: 9750a7fad92284948a25c44250b6a91f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -421.5
+      objectReference: {fileID: 0}
     - target: {fileID: 973270764308587325, guid: 9750a7fad92284948a25c44250b6a91f, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221862606789253388, guid: 9750a7fad92284948a25c44250b6a91f, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3433432985621075666, guid: 9750a7fad92284948a25c44250b6a91f, type: 3}
@@ -26154,6 +26074,70 @@ PrefabInstance:
     - target: {fileID: 3639948182903113169, guid: 9750a7fad92284948a25c44250b6a91f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3992028833445413690, guid: 9750a7fad92284948a25c44250b6a91f, type: 3}
+      propertyPath: m_fontSize
+      value: 95
+      objectReference: {fileID: 0}
+    - target: {fileID: 3992028833445413690, guid: 9750a7fad92284948a25c44250b6a91f, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 95
+      objectReference: {fileID: 0}
+    - target: {fileID: 5546411428647390026, guid: 9750a7fad92284948a25c44250b6a91f, type: 3}
+      propertyPath: m_Transition
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5546411428647390026, guid: 9750a7fad92284948a25c44250b6a91f, type: 3}
+      propertyPath: m_Colors.m_PressedColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5546411428647390026, guid: 9750a7fad92284948a25c44250b6a91f, type: 3}
+      propertyPath: m_Colors.m_PressedColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5546411428647390026, guid: 9750a7fad92284948a25c44250b6a91f, type: 3}
+      propertyPath: m_Colors.m_PressedColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5546411428647390026, guid: 9750a7fad92284948a25c44250b6a91f, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5546411428647390026, guid: 9750a7fad92284948a25c44250b6a91f, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5546411428647390026, guid: 9750a7fad92284948a25c44250b6a91f, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5546411428647390026, guid: 9750a7fad92284948a25c44250b6a91f, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5546411428647390026, guid: 9750a7fad92284948a25c44250b6a91f, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5546411428647390026, guid: 9750a7fad92284948a25c44250b6a91f, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5546411428647390026, guid: 9750a7fad92284948a25c44250b6a91f, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6216942576860248321, guid: 9750a7fad92284948a25c44250b6a91f, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6216942576860248321, guid: 9750a7fad92284948a25c44250b6a91f, type: 3}
+      propertyPath: m_Color.g
+      value: 0.8207547
+      objectReference: {fileID: 0}
+    - target: {fileID: 6216942576860248321, guid: 9750a7fad92284948a25c44250b6a91f, type: 3}
+      propertyPath: m_Color.r
+      value: 0.02465334
       objectReference: {fileID: 0}
     - target: {fileID: 7217379431430907774, guid: 9750a7fad92284948a25c44250b6a91f, type: 3}
       propertyPath: m_Pivot.x
@@ -26280,6 +26264,5 @@ SceneRoots:
   - {fileID: 952998314}
   - {fileID: 1545294986}
   - {fileID: 1678290574}
-  - {fileID: 3310178271421949462}
   - {fileID: 163779573}
   - {fileID: 1390715430}

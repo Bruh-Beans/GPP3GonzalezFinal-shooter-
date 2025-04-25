@@ -2,16 +2,15 @@
 
 public class CameraController : MonoBehaviour
 {
-    [Tooltip("Enable to move the camera by holding the right mouse button. Does not work with joysticks.")]
     public bool clickToMoveCamera = false;
-    [Tooltip("Enable zoom in/out when scrolling the mouse wheel. Does not work with joysticks.")]
+   
     public bool canZoom = true;
 
-    [Space]
-    [Tooltip("The higher it is, the faster the camera moves. It is recommended to increase this value for games that uses joystick.")]
+    
+   
     public float sensitivity = 5f;
 
-    [Tooltip("Camera Y rotation limits. The X axis is the maximum it can go up and the Y axis is the maximum it can go down.")]
+   
     public Vector2 cameraLimit = new Vector2(-45, 40);
 
     // Head bobbing parameters
@@ -69,7 +68,7 @@ public class CameraController : MonoBehaviour
     // Function to apply head bobbing based on player movement
     void ApplyHeadBobbing()
     {
-        // Check if the player is moving (you can adjust this based on your movement logic)
+        
         if (player.GetComponent<Rigidbody>().velocity.magnitude > 0.1f) // Threshold to trigger bobbing
         {
             timeSinceLastStep += Time.deltaTime * bobbingSpeed;
@@ -80,7 +79,7 @@ public class CameraController : MonoBehaviour
         }
         else
         {
-            // Reset the head bobbing when the player stops moving
+           
             timeSinceLastStep = 0f;
             transform.localPosition = new Vector3(transform.localPosition.x, offsetDistanceY, transform.localPosition.z);
         }

@@ -6,6 +6,7 @@ using TMPro;
 
 public class ThirdPersonController : MonoBehaviour
 {
+
     private float fixedYPosition;
 
 
@@ -17,6 +18,9 @@ public class ThirdPersonController : MonoBehaviour
     public float meleeDuration = 20f;
     private float meleeTimeLeft = 0f;
     private bool isMeleeTimerRunning = false;
+    private float meleeCooldown = 0.68f;
+    private float nextMeleeTime = 0f;
+
 
     public GameObject objectToMove;
     [Header("Bow / Projectile")]
@@ -25,7 +29,7 @@ public class ThirdPersonController : MonoBehaviour
     public GameObject projectilePrefab;
     public Transform projectileSpawnPoint;
     public float projectileSpeed = 20f;
-    private float shootCooldown = 1f;
+    private float shootCooldown = 0.5f;
     private float nextShootTime = 0f;
     private float currentCharge = 0f;
     public float maxCharge = 1f, minProjectileSpeed = 0f, maxProjectileSpeed = 100f;
@@ -119,8 +123,12 @@ public class ThirdPersonController : MonoBehaviour
                 animator.SetBool("isDrawn", false);
             }
 
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && Time.time >= nextMeleeTime)
+            {
                 AttackWithMeleeWeapon();
+                nextMeleeTime = Time.time + meleeCooldown;
+            }
+
         }
 
         if (isMeleeTimerRunning)

@@ -33,7 +33,6 @@ public class DeerAI : MonoBehaviour
     private Text scoreText;
     private bool isDead;
 
-    public BloodThirstManager bloodThirstManager;
     public Slider killSlider;
 
     // Melee Mode Visuals
@@ -188,9 +187,6 @@ public class DeerAI : MonoBehaviour
 
         if (deerBody != null) deerBody.SetActive(false);
         else gameObject.SetActive(false);
-
-        if (bloodThirstManager != null)
-            bloodThirstManager.OnKill();
     }
 
     void OnTriggerEnter(Collider other)
