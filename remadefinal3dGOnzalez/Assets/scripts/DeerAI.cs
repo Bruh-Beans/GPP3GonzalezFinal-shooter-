@@ -48,6 +48,13 @@ public class DeerAI : MonoBehaviour
         animator = GetComponent<Animator>();
         timer = wanderTimer;
 
+        if (GameSettings.Instance != null)
+        {
+            sightRange = GameSettings.Instance.deerSightRange;
+            projectileDetectRadius = GameSettings.Instance.deerDetectRadius;
+            baseSpeed = GameSettings.Instance.deerBaseSpeed;
+            runSpeed = GameSettings.Instance.deerRunSpeed;
+        }
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null) player = playerObj.transform;
 
