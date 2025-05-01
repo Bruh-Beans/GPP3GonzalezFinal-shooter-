@@ -27,7 +27,7 @@ public class GameSettings : MonoBehaviour
         switch (difficulty)
         {
             case "Easy":
-                deerSightRange = 20f;
+                deerSightRange = 15f;
                 deerDetectRadius = 6f;
                 deerBaseSpeed = 4f;
                 deerRunSpeed = 15f;
@@ -35,14 +35,14 @@ public class GameSettings : MonoBehaviour
             case "Hard":
                 deerSightRange = 70f;
                 deerDetectRadius = 15f;
-                deerBaseSpeed = 30f;
+                deerBaseSpeed = 40f;
                 deerRunSpeed = 70f;
                 break;
             case "SuperHard":
                 deerSightRange = 140f;
-                deerDetectRadius = 40f;
-                deerBaseSpeed = 70f;
-                deerRunSpeed = 140f;
+                deerDetectRadius = 70f;
+                deerBaseSpeed = 150f;
+                deerRunSpeed = 250f;
                 break;
         }
     }

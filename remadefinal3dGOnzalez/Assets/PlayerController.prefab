@@ -787,6 +787,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dbd62af2a25df34c9a8e8a7bcb2c370, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  meleeMessageText: {fileID: 0}
+  meleeTimerText: {fileID: 0}
+  meleeDuration: 20
+  objectToMove: {fileID: 0}
+  bowWeapon: {fileID: 0}
   chargeBar: {fileID: 0}
   projectilePrefab: {fileID: 8838999588518004835, guid: 26f1dc48837793b4da3240d4d66da303, type: 3}
   projectileSpawnPoint: {fileID: 8633590353874474267}
@@ -797,10 +802,15 @@ MonoBehaviour:
   velocity: 5
   sprintAddition: 3.5
   thirdPersonCam: {fileID: 0}
+  firstPersonCam: {fileID: 0}
   normalFOV: 80
   zoomedFOV: 40
   fovTransitionSpeed: 5
-  bloodThirstSprintAddition: 100
+  bloodThirstSprintAddition: 4
+  meleeWeapon: {fileID: 0}
+  killsToSwitch: 5
+  meleeSpeedBoost: 5
+  isMeleeMode: 0
 --- !u!1001 &6806226644954584292
 PrefabInstance:
   m_ObjectHideFlags: 0

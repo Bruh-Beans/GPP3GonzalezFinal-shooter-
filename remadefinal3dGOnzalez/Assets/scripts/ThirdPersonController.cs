@@ -78,10 +78,11 @@ public class ThirdPersonController : MonoBehaviour
 
     void Update()
     {
-        if (!isMeleeMode && ScoreManager.Instance != null && ScoreManager.Instance.killCount >= killsToSwitch)
+        if (!isMeleeMode && ScoreManager.Instance != null && ScoreManager.Instance.totalKillCount >= killsToSwitch)
         {
             SwitchToMeleeMode();
         }
+
 
         inputHorizontal = Input.GetAxis("Horizontal");
         inputVertical = Input.GetAxis("Vertical");
@@ -278,7 +279,8 @@ public class ThirdPersonController : MonoBehaviour
         // Reset animator melee states
         animator.SetBool("isSwordRunning", false);
         animator.SetBool("isSwordIdle", false);
-        ScoreManager.Instance.killCount = 0; // Or add a boolean flag to prevent re-entry
+        ScoreManager.Instance.totalKillCount = 0; // Or add a boolean flag to prevent re-entry
+
     }
 
     public void IncreaseSprintSpeed() => sprintAddition = bloodThirstSprintAddition;

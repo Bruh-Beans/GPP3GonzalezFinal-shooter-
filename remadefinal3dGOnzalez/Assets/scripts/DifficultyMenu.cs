@@ -5,19 +5,16 @@ public class DifficultyMenu : MonoBehaviour
 {
     public void SetEasy()
     {
-        GameSettings.Instance.SetDifficulty("Easy");
-        SceneManager.LoadScene("GameScene"); // Replace with your scene name
-    }
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
 
     public void SetHard()
     {
-        GameSettings.Instance.SetDifficulty("Hard");
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
     }
 
     public void SetSuperHard()
     {
-        GameSettings.Instance.SetDifficulty("SuperHard");
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 3);
     }
 }

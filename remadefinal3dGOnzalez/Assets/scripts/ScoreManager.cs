@@ -6,13 +6,22 @@ public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager Instance;
 
-    public int killCount = 0;
-    public TextMeshProUGUI killText;
+    public int totalKillCount = 0;
+    public int killCombo = 0;
 
+    public TextMeshProUGUI totalKillText;
+    public TextMeshProUGUI comboKillText;
+
+    // New function to reset total kills, if needed
+    public void ResetTotalKills()
+    {
+        totalKillCount = 0;
+        UpdateKillUI();  // Update the UI after reset
+    }
 
     private void Awake()
     {
-        // Singleton setup so it's easy to access from anywhere
+        // Singleton setup
         if (Instance == null)
         {
             Instance = this;
@@ -30,15 +39,27 @@ public class ScoreManager : MonoBehaviour
 
     public void IncreaseKillCount(int amount)
     {
-        killCount += amount;
+        totalKillCount += amount;
+        killCombo += amount;
+        UpdateKillUI();
+    }
+
+    public void ResetKillCombo()
+    {
+        killCombo = 0;
         UpdateKillUI();
     }
 
     void UpdateKillUI()
     {
-        if (killText != null)
+        if (totalKillText != null)
         {
-            killText.text = "Kills: " + killCount.ToString();
+            totalKillText.text = "Total Kills: " + totalKillCount.ToString();
+        }
+
+        if (comboKillText != null)
+        {
+            comboKillText.text = "Kill Combo: " + killCombo.ToString();
         }
     }
 }
