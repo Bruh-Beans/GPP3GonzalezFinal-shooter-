@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.InputSystem.XR;
 
 public class ThirdPersonController : MonoBehaviour
 {
@@ -62,6 +63,15 @@ public class ThirdPersonController : MonoBehaviour
 
     void Start()
     {
+        cc = GetComponent<CharacterController>();
+        animator = GetComponent<Animator>();
+
+        if (animator != null)
+        {
+            animator.enabled = true;
+            animator.updateMode = AnimatorUpdateMode.Normal;
+        }
+
         if (thirdPersonCam) thirdPersonCam.enabled = true;
         if (firstPersonCam) firstPersonCam.enabled = false;
 
@@ -78,6 +88,16 @@ public class ThirdPersonController : MonoBehaviour
 
     void Update()
     {
+        // At the top of Update():
+        bool isInMeleeAttack = animator.GetCurrentAnimatorStateInfo(0).IsName("SwordAttack");
+
+        // Then inside your melee mode block:
+        if (!isInMeleeAttack)
+        {
+            animator.SetBool("isSwordRunning", isWalking);
+            animator.SetBool("isSwordIdle", !isWalking);
+        }
+
         if (!isMeleeMode && ScoreManager.Instance != null && ScoreManager.Instance.totalKillCount >= killsToSwitch)
         {
             SwitchToMeleeMode();

@@ -713,7 +713,7 @@ PrefabInstance:
       addedObject: {fileID: 6800304791665561848}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2222703f9efe56245b5a6e4acc93e2f2, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8393168962429957655}
+      addedObject: {fileID: 2198856607094318222}
   m_SourcePrefab: {fileID: 100100000, guid: 2222703f9efe56245b5a6e4acc93e2f2, type: 3}
 --- !u!4 &3999647194241673517 stripped
 Transform:
@@ -741,13 +741,7 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
-  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
-    are already bound by a Humanoid avatar. These transforms can only be changed
-    by Humanoid clips.\n\tTransform 'mixamorig:Hips'\n\tTransform 'mixamorig:LeftFoot'\n\tTransform
-    'mixamorig:LeftHandThumb2'\n\tTransform 'mixamorig:LeftHandIndex1'\n\tTransform
-    'mixamorig:LeftHandPinky2'\n\tTransform 'mixamorig:RightHandRing2'\n\tTransform
-    'mixamorig:Spine1'\n\tTransform 'mixamorig:LeftToeBase'\n\tTransform 'mixamorig:RightArm'\n\tTransform
-    'mixamorig:LeftLeg'\n\tand more ...\n\tFrom animation clip 'mixamo.com'"
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
@@ -810,11 +804,11 @@ MonoBehaviour:
   zoomedFOV: 40
   fovTransitionSpeed: 5
   bloodThirstSprintAddition: 20
-  meleeWeapon: {fileID: 8921298094038064211}
+  meleeWeapon: {fileID: 8886637103443370643}
   killsToSwitch: 5
   meleeSpeedBoost: 20
   isMeleeMode: 0
---- !u!54 &8393168962429957655
+--- !u!54 &2198856607094318222
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -974,13 +968,7 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: e150b9dd67e757c4c88dae48cf33076b, type: 2}
     - target: {fileID: 5866666021909216657, guid: 764c6390f31b5cd4e89d2a95184e2f34, type: 3}
       propertyPath: m_WarningMessage
-      value: "\nBinding warning: Some generic clip(s) animate transforms that are
-        already bound by a Humanoid avatar. These transforms can only be changed
-        by Humanoid clips.\n\tTransform 'mixamorig:Hips'\n\tTransform 'mixamorig:LeftFoot'\n\tTransform
-        'mixamorig:LeftHandThumb2'\n\tTransform 'mixamorig:LeftHandIndex1'\n\tTransform
-        'mixamorig:LeftHandPinky2'\n\tTransform 'mixamorig:RightHandRing2'\n\tTransform
-        'mixamorig:Spine1'\n\tTransform 'mixamorig:LeftToeBase'\n\tTransform 'mixamorig:RightArm'\n\tTransform
-        'mixamorig:LeftLeg'\n\tand more ...\n\tFrom animation clip 'mixamo.com'"
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 764c6390f31b5cd4e89d2a95184e2f34, type: 3}
       propertyPath: m_ApplyRootMotion
@@ -995,10 +983,16 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8447082967072642302, guid: 764c6390f31b5cd4e89d2a95184e2f34, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8918188056124279271}
+    - targetCorrespondingSourceObject: {fileID: 8447082967072642302, guid: 764c6390f31b5cd4e89d2a95184e2f34, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8889745903295215399}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 764c6390f31b5cd4e89d2a95184e2f34, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5851773294574500371}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 764c6390f31b5cd4e89d2a95184e2f34, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 29045729433977544}
   m_SourcePrefab: {fileID: 100100000, guid: 764c6390f31b5cd4e89d2a95184e2f34, type: 3}
 --- !u!1 &696956526087991743 stripped
 GameObject:
@@ -1041,10 +1035,126 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1.87, z: 1}
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!65 &29045729433977544
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7073507986229890954}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1.87, z: 1}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!4 &7593621638637114672 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 764c6390f31b5cd4e89d2a95184e2f34, type: 3}
   m_PrefabInstance: {fileID: 7992569755902030555}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8885604913675675259
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2004487679270200869}
+    m_Modifications:
+    - target: {fileID: 1037715513984232, guid: 259746fbc59909b4eb14377c46a80363, type: 3}
+      propertyPath: m_Name
+      value: Sword_OH
+      objectReference: {fileID: 0}
+    - target: {fileID: 4145553361310044, guid: 259746fbc59909b4eb14377c46a80363, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.026
+      objectReference: {fileID: 0}
+    - target: {fileID: 4145553361310044, guid: 259746fbc59909b4eb14377c46a80363, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4145553361310044, guid: 259746fbc59909b4eb14377c46a80363, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 4145553361310044, guid: 259746fbc59909b4eb14377c46a80363, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.48479065
+      objectReference: {fileID: 0}
+    - target: {fileID: 4145553361310044, guid: 259746fbc59909b4eb14377c46a80363, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.6772179
+      objectReference: {fileID: 0}
+    - target: {fileID: 4145553361310044, guid: 259746fbc59909b4eb14377c46a80363, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.20339897
+      objectReference: {fileID: 0}
+    - target: {fileID: 4145553361310044, guid: 259746fbc59909b4eb14377c46a80363, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.5147649
+      objectReference: {fileID: 0}
+    - target: {fileID: 4145553361310044, guid: 259746fbc59909b4eb14377c46a80363, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4145553361310044, guid: 259746fbc59909b4eb14377c46a80363, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4145553361310044, guid: 259746fbc59909b4eb14377c46a80363, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4389951534767598416, guid: 259746fbc59909b4eb14377c46a80363, type: 3}
+      propertyPath: m_Constraints
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4389951534767598416, guid: 259746fbc59909b4eb14377c46a80363, type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4389951534767598416, guid: 259746fbc59909b4eb14377c46a80363, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7632797980336564261, guid: 259746fbc59909b4eb14377c46a80363, type: 3}
+      propertyPath: m_Size.z
+      value: 0.90745777
+      objectReference: {fileID: 0}
+    - target: {fileID: 7632797980336564261, guid: 259746fbc59909b4eb14377c46a80363, type: 3}
+      propertyPath: m_Center.x
+      value: 0.0022033334
+      objectReference: {fileID: 0}
+    - target: {fileID: 7632797980336564261, guid: 259746fbc59909b4eb14377c46a80363, type: 3}
+      propertyPath: m_Center.y
+      value: 0.0033290177
+      objectReference: {fileID: 0}
+    - target: {fileID: 7632797980336564261, guid: 259746fbc59909b4eb14377c46a80363, type: 3}
+      propertyPath: m_Center.z
+      value: 0.32470107
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 259746fbc59909b4eb14377c46a80363, type: 3}
+--- !u!1 &8886637103443370643 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1037715513984232, guid: 259746fbc59909b4eb14377c46a80363, type: 3}
+  m_PrefabInstance: {fileID: 8885604913675675259}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8889745903295215399 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4145553361310044, guid: 259746fbc59909b4eb14377c46a80363, type: 3}
+  m_PrefabInstance: {fileID: 8885604913675675259}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8920925604804876475
 PrefabInstance:
@@ -1134,10 +1244,5 @@ PrefabInstance:
 --- !u!4 &8918188056124279271 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4145553361310044, guid: 259746fbc59909b4eb14377c46a80363, type: 3}
-  m_PrefabInstance: {fileID: 8920925604804876475}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &8921298094038064211 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1037715513984232, guid: 259746fbc59909b4eb14377c46a80363, type: 3}
   m_PrefabInstance: {fileID: 8920925604804876475}
   m_PrefabAsset: {fileID: 0}
